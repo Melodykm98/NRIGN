@@ -1,0 +1,442 @@
+nohup: ignoring input
+Loading previously saved dgl graphs and corresponding data...
+Loading previously saved dgl graphs and corresponding data...
+Loading previously saved dgl graphs and corresponding data...
+the number of train data: 160
+the number of valid data: 20
+the number of test data: 20
+number of parameters :  378246
+DTIPredictorV4_V2(
+  (cov_graph): ModifiedAttentiveFPPredictorV2(
+    (gnn): ModifiedAttentiveFPGNNV2(
+      (init_context): GetContext(
+        (project_node): Sequential(
+          (0): Linear(in_features=40, out_features=128, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+        )
+        (project_edge1): Sequential(
+          (0): Linear(in_features=61, out_features=128, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+        )
+        (project_edge2): Sequential(
+          (0): Dropout(p=0.15, inplace=False)
+          (1): Linear(in_features=256, out_features=1, bias=True)
+          (2): LeakyReLU(negative_slope=0.01)
+        )
+        (attentive_gru): AttentiveGRU1(
+          (edge_transform): Sequential(
+            (0): Dropout(p=0.15, inplace=False)
+            (1): Linear(in_features=128, out_features=128, bias=True)
+          )
+          (gru): GRUCell(128, 128)
+        )
+      )
+      (gnn_layers): ModuleList(
+        (0): GNNLayer(
+          (project_edge): Sequential(
+            (0): Dropout(p=0.15, inplace=False)
+            (1): Linear(in_features=256, out_features=1, bias=True)
+            (2): LeakyReLU(negative_slope=0.01)
+          )
+          (attentive_gru): AttentiveGRU2(
+            (project_node): Sequential(
+              (0): Dropout(p=0.15, inplace=False)
+              (1): Linear(in_features=128, out_features=128, bias=True)
+            )
+            (gru): GRUCell(128, 128)
+          )
+          (bn_layer): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (predict): Sequential(
+      (0): Dropout(p=0.15, inplace=False)
+      (1): Linear(in_features=128, out_features=1, bias=True)
+    )
+  )
+  (noncov_graph): DTIConvGraph3Layer(
+    (grah_conv): DTIConvGraph3(
+      (mpl): Sequential(
+        (0): Linear(in_features=129, out_features=128, bias=True)
+        (1): LeakyReLU(negative_slope=0.01)
+        (2): Linear(in_features=128, out_features=128, bias=True)
+        (3): LeakyReLU(negative_slope=0.01)
+        (4): Linear(in_features=128, out_features=128, bias=True)
+        (5): LeakyReLU(negative_slope=0.01)
+      )
+    )
+    (dropout): Dropout(p=0.15, inplace=False)
+    (bn_layer): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (FC): FC(
+    (predict): ModuleList(
+      (0): Linear(in_features=512, out_features=128, bias=True)
+      (1): Dropout(p=0.15, inplace=False)
+      (2): LeakyReLU(negative_slope=0.01)
+      (3): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (4): Linear(in_features=128, out_features=128, bias=True)
+      (5): Dropout(p=0.15, inplace=False)
+      (6): LeakyReLU(negative_slope=0.01)
+      (7): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (8): Linear(in_features=128, out_features=2, bias=True)
+    )
+  )
+  (readout): EdgeWeightedSumAndMax(
+    (weight_and_sum): EdgeWeightAndSum(
+      (atom_weighting): Sequential(
+        (0): Linear(in_features=128, out_features=1, bias=True)
+        (1): Tanh()
+      )
+    )
+  )
+)
+epoch:0
+train_mcc:0.0128 	 train_acc:0.6937 
+valid_mcc:-0.0964 	 valid_acc:0.8000
+time:1.833 s
+EarlyStopping counter: 1 out of 70
+epoch:1
+train_mcc:0.0000 	 train_acc:0.7812 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.382 s
+EarlyStopping counter: 2 out of 70
+epoch:2
+train_mcc:0.0000 	 train_acc:0.7812 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.537 s
+EarlyStopping counter: 3 out of 70
+epoch:3
+train_mcc:0.2126 	 train_acc:0.7937 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.475 s
+EarlyStopping counter: 4 out of 70
+epoch:4
+train_mcc:0.2126 	 train_acc:0.7937 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.466 s
+EarlyStopping counter: 5 out of 70
+epoch:5
+train_mcc:0.0000 	 train_acc:0.7812 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.420 s
+EarlyStopping counter: 6 out of 70
+epoch:6
+train_mcc:0.5560 	 train_acc:0.8625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.445 s
+EarlyStopping counter: 7 out of 70
+epoch:7
+train_mcc:0.4358 	 train_acc:0.7562 
+valid_mcc:0.3974 	 valid_acc:0.8000
+time:0.473 s
+EarlyStopping counter: 8 out of 70
+epoch:8
+train_mcc:0.3376 	 train_acc:0.6500 
+valid_mcc:0.2810 	 valid_acc:0.6500
+time:0.411 s
+EarlyStopping counter: 9 out of 70
+epoch:9
+train_mcc:0.2653 	 train_acc:0.5625 
+valid_mcc:0.2810 	 valid_acc:0.6500
+time:0.402 s
+EarlyStopping counter: 10 out of 70
+epoch:10
+train_mcc:0.3024 	 train_acc:0.6625 
+valid_mcc:0.3504 	 valid_acc:0.7500
+time:0.400 s
+EarlyStopping counter: 11 out of 70
+epoch:11
+train_mcc:0.3865 	 train_acc:0.8125 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.434 s
+EarlyStopping counter: 12 out of 70
+epoch:12
+train_mcc:0.3394 	 train_acc:0.8125 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.480 s
+EarlyStopping counter: 13 out of 70
+epoch:13
+train_mcc:0.4042 	 train_acc:0.8250 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.443 s
+EarlyStopping counter: 14 out of 70
+epoch:14
+train_mcc:0.4880 	 train_acc:0.8438 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.496 s
+EarlyStopping counter: 15 out of 70
+epoch:15
+train_mcc:0.5135 	 train_acc:0.8500 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.392 s
+EarlyStopping counter: 16 out of 70
+epoch:16
+train_mcc:0.6299 	 train_acc:0.8812 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.387 s
+EarlyStopping counter: 17 out of 70
+epoch:17
+train_mcc:0.7546 	 train_acc:0.9187 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.430 s
+EarlyStopping counter: 18 out of 70
+epoch:18
+train_mcc:0.7939 	 train_acc:0.9313 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.401 s
+EarlyStopping counter: 19 out of 70
+epoch:19
+train_mcc:0.7939 	 train_acc:0.9313 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.404 s
+EarlyStopping counter: 20 out of 70
+epoch:20
+train_mcc:0.7743 	 train_acc:0.9250 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.452 s
+EarlyStopping counter: 21 out of 70
+epoch:21
+train_mcc:0.7743 	 train_acc:0.9250 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.444 s
+EarlyStopping counter: 22 out of 70
+epoch:22
+train_mcc:0.8324 	 train_acc:0.9437 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.391 s
+EarlyStopping counter: 23 out of 70
+epoch:23
+train_mcc:0.8537 	 train_acc:0.9500 
+valid_mcc:0.6882 	 valid_acc:0.9500
+time:0.386 s
+EarlyStopping counter: 24 out of 70
+epoch:24
+train_mcc:0.8616 	 train_acc:0.9500 
+valid_mcc:0.5461 	 valid_acc:0.9000
+time:0.403 s
+EarlyStopping counter: 25 out of 70
+epoch:25
+train_mcc:0.9269 	 train_acc:0.9750 
+valid_mcc:0.6882 	 valid_acc:0.9500
+time:0.461 s
+EarlyStopping counter: 26 out of 70
+epoch:26
+train_mcc:0.9260 	 train_acc:0.9750 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.379 s
+EarlyStopping counter: 27 out of 70
+epoch:27
+train_mcc:0.9078 	 train_acc:0.9688 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.376 s
+EarlyStopping counter: 28 out of 70
+epoch:28
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.409 s
+EarlyStopping counter: 29 out of 70
+epoch:29
+train_mcc:0.9078 	 train_acc:0.9688 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.405 s
+EarlyStopping counter: 30 out of 70
+epoch:30
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.426 s
+EarlyStopping counter: 31 out of 70
+epoch:31
+train_mcc:0.8324 	 train_acc:0.9437 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.366 s
+EarlyStopping counter: 32 out of 70
+epoch:32
+train_mcc:0.8324 	 train_acc:0.9437 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.415 s
+EarlyStopping counter: 33 out of 70
+epoch:33
+train_mcc:0.8704 	 train_acc:0.9563 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.385 s
+EarlyStopping counter: 34 out of 70
+epoch:34
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.403 s
+EarlyStopping counter: 35 out of 70
+epoch:35
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.401 s
+EarlyStopping counter: 36 out of 70
+epoch:36
+train_mcc:0.8324 	 train_acc:0.9437 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.420 s
+EarlyStopping counter: 37 out of 70
+epoch:37
+train_mcc:0.7743 	 train_acc:0.9250 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.428 s
+EarlyStopping counter: 38 out of 70
+epoch:38
+train_mcc:0.7743 	 train_acc:0.9250 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.400 s
+EarlyStopping counter: 39 out of 70
+epoch:39
+train_mcc:0.8704 	 train_acc:0.9563 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.434 s
+EarlyStopping counter: 40 out of 70
+epoch:40
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.428 s
+EarlyStopping counter: 41 out of 70
+epoch:41
+train_mcc:0.8704 	 train_acc:0.9563 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.398 s
+EarlyStopping counter: 42 out of 70
+epoch:42
+train_mcc:0.6516 	 train_acc:0.8875 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.399 s
+EarlyStopping counter: 43 out of 70
+epoch:43
+train_mcc:0.6516 	 train_acc:0.8875 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.420 s
+EarlyStopping counter: 44 out of 70
+epoch:44
+train_mcc:0.7743 	 train_acc:0.9250 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.444 s
+EarlyStopping counter: 45 out of 70
+epoch:45
+train_mcc:0.8324 	 train_acc:0.9437 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.424 s
+EarlyStopping counter: 46 out of 70
+epoch:46
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.397 s
+EarlyStopping counter: 47 out of 70
+epoch:47
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.468 s
+EarlyStopping counter: 48 out of 70
+epoch:48
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.418 s
+EarlyStopping counter: 49 out of 70
+epoch:49
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.435 s
+EarlyStopping counter: 50 out of 70
+epoch:50
+train_mcc:0.9078 	 train_acc:0.9688 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.444 s
+EarlyStopping counter: 51 out of 70
+epoch:51
+train_mcc:0.9078 	 train_acc:0.9688 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.386 s
+EarlyStopping counter: 52 out of 70
+epoch:52
+train_mcc:0.9078 	 train_acc:0.9688 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.423 s
+EarlyStopping counter: 53 out of 70
+epoch:53
+train_mcc:0.8515 	 train_acc:0.9500 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.386 s
+EarlyStopping counter: 54 out of 70
+epoch:54
+train_mcc:0.8515 	 train_acc:0.9500 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.431 s
+EarlyStopping counter: 55 out of 70
+epoch:55
+train_mcc:0.8324 	 train_acc:0.9437 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.404 s
+EarlyStopping counter: 56 out of 70
+epoch:56
+train_mcc:0.8133 	 train_acc:0.9375 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.387 s
+EarlyStopping counter: 57 out of 70
+epoch:57
+train_mcc:0.8515 	 train_acc:0.9500 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.394 s
+EarlyStopping counter: 58 out of 70
+epoch:58
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.439 s
+EarlyStopping counter: 59 out of 70
+epoch:59
+train_mcc:0.9078 	 train_acc:0.9688 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.391 s
+EarlyStopping counter: 60 out of 70
+epoch:60
+train_mcc:0.9078 	 train_acc:0.9688 
+valid_mcc:1.0000 	 valid_acc:1.0000
+time:0.382 s
+EarlyStopping counter: 61 out of 70
+epoch:61
+train_mcc:0.9078 	 train_acc:0.9688 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.413 s
+EarlyStopping counter: 62 out of 70
+epoch:62
+train_mcc:0.8515 	 train_acc:0.9500 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.373 s
+EarlyStopping counter: 63 out of 70
+epoch:63
+train_mcc:0.8133 	 train_acc:0.9375 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.383 s
+EarlyStopping counter: 64 out of 70
+epoch:64
+train_mcc:0.8892 	 train_acc:0.9625 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.389 s
+EarlyStopping counter: 65 out of 70
+epoch:65
+train_mcc:0.9633 	 train_acc:0.9875 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.426 s
+EarlyStopping counter: 66 out of 70
+epoch:66
+train_mcc:0.7743 	 train_acc:0.9250 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.386 s
+EarlyStopping counter: 67 out of 70
+epoch:67
+train_mcc:0.6516 	 train_acc:0.8875 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.383 s
+EarlyStopping counter: 68 out of 70
+epoch:68
+train_mcc:0.5852 	 train_acc:0.8688 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.442 s
+EarlyStopping counter: 69 out of 70
+epoch:69
+train_mcc:0.5852 	 train_acc:0.8688 
+valid_mcc:0.0000 	 valid_acc:0.9500
+time:0.382 s
+EarlyStopping counter: 70 out of 70
