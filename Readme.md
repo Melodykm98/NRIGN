@@ -1,3 +1,5 @@
+![Figure1](https://github.com/user-attachments/assets/1605efb6-6f23-4322-92a3-561d8c9acfc3)
+
 # Nuclear Receptors InteractionGraphNet (NRIGN)
 NRIGN: A Unified Deep Graph Model for Discriminating Molecular Types of Ligands Targeting Nuclear Receptors.
 
