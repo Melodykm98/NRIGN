@@ -22,7 +22,7 @@ prefetch_generator = 1.0.3
 We provide one strategy as example, namely alignment_six, for training.
 
 ```bash
-nohup python -u ./codes/nrign_train.py --gpuid 0 --epochs 300 --batch_size 128 --lr 0.0003 --l2 0.000001 --dropout 0.15 --dis_threshold 6 > ./result/toy_example.log 2>&1 &
+python -u ./codes/nrign_train.py --gpuid 0 --epochs 300 --batch_size 128 --lr 0.0003 --l2 0.000001 --dropout 0.15 --dis_threshold 6 
 ```
 We included approximately 200 toy samples in the data folder, due to the large data size, to illustrate the process of training the NRIGN model. Each sample is stored in a pickle file and comprises four RDKit objects: two representing the active and inactive conformations of the protein, and two corresponding to the active and inactive conformations of its ligand.
 
